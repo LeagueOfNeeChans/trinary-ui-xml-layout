@@ -7,19 +7,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Margins {
+public class Alignment {
 	@XmlElement
-	protected String x, y;
-	
-	public Margins() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Margins(String x, String y) {
-		super();
-		this.x = x;
-		this.y = y;
-	}
+	String x, y;
 
 	public String getX() {
 		return x;
@@ -39,6 +29,6 @@ public class Margins {
 
 	@Override
 	public String toString() {
-		return "Margins [x=" + x + ", y=" + y + "]";
+		return "Alignment [x=" + x + ", y=" + y + "]";
 	}
 }

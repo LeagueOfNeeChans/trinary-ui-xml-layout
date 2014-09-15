@@ -18,11 +18,15 @@ public class Location {
 				bottom = null, 
 				right = null;
 	
+	protected String locationString;
+	
 	public Location() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Location(String locString) {
+		this.locationString = locString;
+		
 		Pattern p = Pattern.compile("([0-9]+)(%|px)");
 		String[] pairs = locString.split(",");
 		
@@ -88,13 +92,37 @@ public class Location {
 		return right;
 	}
 
+	public String getLocationString() {
+		StringBuilder sb = new StringBuilder();
+		String separator = "";
+		
+		if (top != null) {
+			sb.append(separator + String.format("top: %s", top));
+			separator = ", ";
+		}
+		if (left != null) {
+			sb.append(separator + String.format("left: %s", left));
+			separator = ", ";
+		}
+		if (bottom != null) {
+			sb.append(separator + String.format("bottom: %s", bottom));
+			separator = ", ";
+		}
+		if (right != null) {
+			sb.append(separator + String.format("right: %s", right));
+			separator = ", ";
+		}
+		
+		return sb.toString();
+	}
+
+	public void setLocationString(String locationString) {
+		this.locationString = locationString;
+	}
+
 	@Override
 	public String toString() {
-		return String.format(""
-				+ "left:    %s\n"
-				+ "top:     %s\n"
-				+ "right:   %s\n"
-				+ "bottom:  %s",
-				left, top, right, bottom);
+		return "Location [top=" + top + ", left=" + left + ", bottom=" + bottom
+				+ ", right=" + right + "]";
 	}
 }

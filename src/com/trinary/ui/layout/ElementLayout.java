@@ -28,14 +28,20 @@ public class ElementLayout {
 	protected Margins margins;
 	
 	@XmlElement
+	protected Alignment alignment;
+	
+	@XmlElement
 	protected String resource;
 	
 	@XmlElement
 	protected Integer zIndex;
 	
+	@XmlElement
+	protected String transparency;
+	
 	@XmlElementWrapper(name="children")
 	@XmlElement(name="layout")
-	protected ArrayList<ElementLayout> children = new ArrayList<ElementLayout>();
+	protected ArrayList<ElementLayout> children;
 	
 	public ElementLayout() {
 		super();
@@ -103,6 +109,9 @@ public class ElementLayout {
 	}
 
 	public void addChild(ElementLayout child) {
+		if (this.children == null) {
+			 this.children = new ArrayList<ElementLayout>();
+		}
 		this.children.add(child);
 	}
 
@@ -112,5 +121,30 @@ public class ElementLayout {
 
 	public void setzIndex(Integer zIndex) {
 		this.zIndex = zIndex;
+	}
+
+	public Alignment getAlignment() {
+		return alignment;
+	}
+
+	public void setAlignment(Alignment alignment) {
+		this.alignment = alignment;
+	}
+
+	public String getTransparency() {
+		return transparency;
+	}
+
+	public void setTransparency(String transparency) {
+		this.transparency = transparency;
+	}
+
+	@Override
+	public String toString() {
+		return "ElementLayout [id=" + id + ", type=" + type + ", location="
+				+ location + ", dimensions=" + dimensions + ", margins="
+				+ margins + /*", alignment=" + alignment +*/ ", resource="
+				+ resource + ", zIndex=" + zIndex + ", transparency="
+				+ transparency + ", children=" + children + "]";
 	}
 }
