@@ -13,9 +13,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Location {
 	@XmlElement
 	protected String 
-				top = null, 
-				left = null, 
-				bottom = null, 
+				top = null,
+				left = null,
+				bottom = null,
 				right = null;
 	
 	protected String locationString;
@@ -90,6 +90,22 @@ public class Location {
 
 	public String getRight() {
 		return right;
+	}
+	
+	public Integer getTopPx() {
+		return Integer.parseInt(top.substring(0, top.indexOf("px")).trim());
+	}
+	
+	public Integer getLeftPx() {
+		return Integer.parseInt(left.substring(0, left.indexOf("px")).trim());
+	}
+
+	public Integer getBottomPx() {
+		return Integer.parseInt(bottom.substring(0, bottom.indexOf("px")).trim());
+	}
+
+	public Integer getRightPx() {
+		return Integer.parseInt(right.substring(0, right.indexOf("px")).trim());
 	}
 
 	public String getLocationString() {
